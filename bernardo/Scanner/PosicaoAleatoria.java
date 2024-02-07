@@ -1,0 +1,10 @@
+import java.util.Scanner;
+import javag.Math;.lan
+public class PosicaoAleatoria{
+    public static void main(String[] args){
+        Scanner input = new Scanner(System.in);
+        String name = input.nextLine();
+        int acd = (int)(Math.random()*name.length());
+        System.out.println(name.charAt(acd));
+    }
+}
