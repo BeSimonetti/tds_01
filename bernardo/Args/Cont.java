@@ -1,15 +1,12 @@
-public class Intercalar{
+public class Cont{
     public static void main(String[] args){
-        int i = 0;
-        while(i < args.length){
+        for(int i = 0; i < args.length; i++){
             if(i < args.length - 1){
                 System.out.print(args[i] + "-");
-                i++;
             }
             else{
                 System.out.print(args[i]);
-                i++;
-            }
+            }    
         }
         System.out.println();
     }
