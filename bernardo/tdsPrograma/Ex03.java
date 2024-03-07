@@ -8,8 +8,8 @@ public class Ex03 {
         Random random = new Random();
         int[] cont = new int[6];
         for(int i=0; i<100; i++){
-            int resultLanca = random.nextInt(6) + 1;
-            cont[resultLanca - 1]++;
+            int resultLanca = random.nextInt(6);
+            cont[resultLanca]++;
         }
         for(int f = 1; f <= 6; f++){
             System.out.println("Face " + f +" : " + cont[f-1]);
