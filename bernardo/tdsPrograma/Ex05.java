@@ -35,19 +35,71 @@ import java.util.Scanner;
 public class Ex05{
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Horas normais trabalhadas no mês: ");
-        double hTraba = sc.nextDouble();
-        System.out.print("Valor da hora: ");
-        double valorH = sc.nextDouble();
-        System.out.print("Horas extras trabalhadas no mês: ");
-        double hExtras = sc.nextDouble();
+        while(true){
+            
+            System.out.print("Nome do funcionário: ");
+            String nome = sc.next();
+            if (nome.equalsIgnoreCase("SAIR")) {
+                System.out.println("Saindo...");
+                break;
+            }
+            System.out.print("Horas normais trabalhadas no mês: ");
+            double hTraba = sc.nextDouble();
+            System.out.print("Valor da hora: ");
+            double valorH = sc.nextDouble();
+            System.out.print("Horas extras trabalhadas no mês: ");
+            double hExtras = sc.nextDouble();
         
-        double hTrabaMes = hTraba + hExtras; // Total de horas no mês.
-        double salario = (hTraba*valorH+(hExtras*(valorH*1.5)));
-        double nSalario = 0;
+            double hTrabaMes = hTraba + hExtras; // Total de horas no mês. Apenas para informação, IMPRIMIR.
+            double salario = (hTraba*valorH+(hExtras*(valorH*1.5))); // Salário sem desconto do INSS.
+            double nSalario = 0; // 
         
-        if(salario>=1412){
-            salario = salario-(salario*0.075);
+            if(salario<=1412.01){
+                nSalario = salario - (salario*0.075);
+            } else if(salario>1412.01 && salario<=2666.68){
+                nSalario = salario - (((salario-1412)*0.09)+(1412*0.075));
+            } else if(salario>2666.68 && salario<=4000.03){
+                nSalario = salario - (((salario-2666.68)*0.12)+((2666.68-1412)*0.09)+(1412*0.075));
+            } else if(salario>4000.03 && salario<=7786.02){
+                nSalario = salario - (((salario-4000.03)*0.14)+((4000.03-2666.68)*0.12)+((2666.68-1412)*0.09)+(1412*0.075));
+            } else if(salario>7786.02){
+                nSalario = salario - (((7786.02-4000.03)*0.14)+((4000.03-2666.68)*0.12)+((2666.68-1412)*0.09)+(1412*0.075));
+            } 
+            System.out.println();
+            System.out.println("Seu salário bruto é de: " + salario);
+            System.out.println("Seu salário líquido é: " + nSalario);
+            System.out.println("As horas trabalhadas no mês foram: " + hTrabaMes);
+            
+            System.out.println();
+
         }
+    
+
     }
 }
+
+/*public Calcular{
+        
+    Calcular(double hTraba, double valorH, double hExtras, double salario){
+        this.hTraba = hTraba;
+        this.valorH = valorH;
+        this.hExtras = hExtras;
+        this.salario = salario;
+    }
+    
+    double salario = (this.hTraba*this.valorH+(this.hExtras*(this.valorH*1.5))); // Salário sem desconto do INSS.
+    double nSalario = 0; // 
+        
+    if(salario<=1412.01){
+        nSalario = this.salario - (1412.01*0.075);
+    } else if(salario>1412.01 && salario<=2666.68){
+        nSalario = salario - (((salario-1412)*0.09)+(1412*0.075));
+    } else if(salario>2666.68 && salario<=4000.03){
+        nSalario = salario - (((salario-2666.68)*0.12)+((2666.68-1412)*0.09)+(1412*0.075));
+    } else if(salario>4000.03 && salario<=7786.02){
+        nSalario = salario - (((salario-4000.03)*0.14)+((4000.03-2666.68)*0.12)+((2666.68-1412)*0.09)+(1412*0.075));
+    } else if(salario>7786.02){
+        nSalario = salario - (((7786.02-4000.03)*0.14)+((4000.03-2666.68)*0.12)+((2666.68-1412)*0.09)+(1412*0.075));
+    } 
+
+} */
