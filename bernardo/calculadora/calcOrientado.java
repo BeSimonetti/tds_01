@@ -1,9 +1,10 @@
+import java.lang.Math;
 public class calcOrientado{
     public static void main(String[] args) {
         double a = Double.parseDouble(args[0]);
         double b = Double.parseDouble(args[2]);
         double result = 0;
-
+        
         Calcular operacoes = new Calcular(a, b);
         
         switch(args[1]){
@@ -26,6 +27,16 @@ public class calcOrientado{
                     result = operacoes.dividir();
                     System.out.println("Resultado: "+ result);
                 }
+                break;
+            case "$":
+                b = 0;
+                result = operacoes.raiz();
+                System.out.println("Resultado: "+result);
+                break;
+            case "°":
+                b = 0;    
+                result = operacoes.fatorial();
+                System.out.println("Resultado: "+result);
                 break;
         }
     
@@ -54,18 +65,14 @@ public class calcOrientado{
         return this.n1 / this.n2;
     }
     public double raiz(){
-
+        return Math.sqrt(n1);
     }
     public double fatorial(){
       
             long fatorial = 1l;
-            for(int j=n1; j>1; j--){
+            for(int j=(int) n1; j>1; j--){
                 fatorial *= j;
             }
-    }
-       
-    
-    public double exponencial(){
-
+            return fatorial;
     }
 }
