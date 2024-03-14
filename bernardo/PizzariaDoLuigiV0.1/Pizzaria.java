@@ -11,16 +11,20 @@ public class Pizzaria {
 
         System.out.print("Informe o tipo de pizza: ");
         item.setTipo(scanner.nextLine());
+        
         System.out.print("Informe o sabor da pizza: ");
         item.setSabor(scanner.nextLine());
+        
         System.out.print("Informe o valor da pizza: ");
         item.setValor(scanner.nextDouble());
+        scanner.nextLine();
 
         System.out.print("Nome do cliente: ");
-        pedido.setCliente(scanner.next());
+        pedido.setCliente(scanner.nextLine());
 
         System.out.print("Taxa de entrega: ");
         pedido.setTxEntrega(scanner.nextDouble());
+        scanner.nextLine();
 
         pedido.adicionarItemDoPedido(item);
         pedido.imprimir();
