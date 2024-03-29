@@ -10,28 +10,27 @@ public class Pizzaria {
             ItemDoPedido item = new ItemDoPedido();
 
             System.out.print("Informe o tipo de pizza: ");
-            item.setTipo(scanner.nextLine());
+            item.setTipo(scanner.nextLine().trim());
         
             System.out.print("Informe o sabor da pizza: ");
-            item.setSabor(scanner.nextLine());
+            item.setSabor(scanner.nextLine().trim());
             
-            System.out.print("Informe o valor da pizza: ");
-            item.setValor(scanner.nextDouble());
-            scanner.nextLine();
-            
-            pedido.adicionarItemDoPedido(item);
-            
+            pedido.addItemDoPedido(item);
+            pedido.setTotal(item.valor());
             System.out.println("mais alguma coisa?");
-            continuar = scanner.nextLine();
+            continuar = scanner.nextLine().trim();
         } while (!continuar.equalsIgnoreCase(""));
 
         System.out.print("Nome do cliente: ");
-        pedido.setCliente(scanner.nextLine());
+        pedido.setCliente(scanner.nextLine().trim());
 
-        System.out.print("Taxa de entrega: ");
-        pedido.setTxEntrega(scanner.nextDouble());
-        scanner.nextLine();
+        System.out.print("Local de entrega: ");
+        pedido.setBairro(scanner.nextLine());
+        pedido.setFrete(pedido.getBairro());
+        pedido.setTotal(pedido.getFrete());
 
         pedido.imprimir();
+        scanner.close();
     }
+
 }

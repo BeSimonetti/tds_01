@@ -1,28 +1,43 @@
 import java.util.ArrayList;
-import java.util.List;
 
 public class Pedido {
-    private int id;
-    private double txEntrega;
-    private ItemDoPedido itemDoPedido;
+    private double total = 0;
+    private double frete;
+    private String bairro;
+    private ArrayList<ItemDoPedido> itemDoPedido = new ArrayList<>();
     private String cliente;
-    double soma;
 
-    public void adicionarItemDoPedido(ItemDoPedido item){
-        this.itemDoPedido = item;
+    public void addItemDoPedido(ItemDoPedido item){
+        this.itemDoPedido.add(item);
     }
 
     public void setCliente(String nome){
         this.cliente = nome;     //.substring(0,1).toUpperCase() + nome.substring(1).toLowerCase();
 
     }
+    public void setBairro(String bairro){
+        this.bairro = bairro;
 
-    public void setTxEntrega(double txEntrega){
-        this.txEntrega = txEntrega;
+    }
+    public String getBairro(){
+        return this.bairro;
+    }
+    public void setFrete(String bairro){
+        if(this.bairro.equalsIgnoreCase("Centro")){
+            frete = 10;
+        }else if(this.bairro.equalsIgnoreCase("Periferia")){
+            frete = 15;
+        }else{
+            frete = 20;
+        }
+    }
+    public double getFrete(){
+        return frete;
     }
 
-    public double getTotal(){
-        return this.txEntrega + this.itemDoPedido.getValor();
+    public void setTotal(double total){
+        this.total += total;
+        
     }
     
     public void imprimir(){
@@ -35,16 +50,21 @@ public class Pedido {
 
         System.out.println("Cliente         : " + this.cliente);
         System.out.println("------------------------------------------");
-
-        System.out.println("Tipo            : " + this.itemDoPedido.getTipo());
-        System.out.println("Sabor           : " + this.itemDoPedido.getSabor());
-        System.out.println("Valor           : " + this.itemDoPedido.getValor());
+        System.out.println("");
+        
+        for(int i =0; i<itemDoPedido.size(); i++){
+            
+            System.out.println("Tipo            : " + this.itemDoPedido.get(i).getTipo());
+            System.out.println("Sabor           : " + this.itemDoPedido.get(i).getSabor());
+            System.out.println("Valor           : " + String.valueOf(this.itemDoPedido.get(i).valor()));
+            System.out.println("");
+        }
+        System.out.println("------------------------------------------");
+        System.out.println("Local de entrega: " + this.bairro);
+        System.out.println("Taxa de entrega : " + this.frete);
         System.out.println("------------------------------------------");
 
-        System.out.println("Taxa de entrega : " + this.txEntrega);
-        System.out.println("------------------------------------------");
-
-        System.out.println("Total           : " + getTotal());
+        System.out.println("Total           : " + this.total);
         System.out.println("------------------------------------------");
 
     }
