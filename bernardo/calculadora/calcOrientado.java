@@ -70,7 +70,7 @@ public class calcOrientado{
     public double fatorial(){
       
             long fatorial = 1l;
-            for(int j=(int) n1; j>1; j--){
+            for(double j= this.n1; j>1; j--){
                 fatorial *= j;
             }
             return fatorial;
